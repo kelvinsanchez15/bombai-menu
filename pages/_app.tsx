@@ -27,11 +27,14 @@ function MyApp({ Component, pageProps }: AppProps) {
 
           <Heading>Bombai - MTY</Heading>
           <Text textAlign="center">
-            ❤️ Comida Italo-Venezolana ❤️ Panadería Artesanal ❤️ Postres ❤️
-            Encurtidos ❤️ Variedades y mucho más
+            Venezuelan Food 🇻🇪 - Boneless and Burgers 🔥
           </Text>
+          <Text textAlign="center">
+            "𝙇𝙞𝙛𝙚 𝙞𝙨 𝙡𝙞𝙠𝙚 𝙩𝙝𝙚 𝙖𝙧𝙚𝙥𝙖, 𝙞𝙩 𝙩𝙖𝙨𝙩𝙚𝙨 𝙬𝙝𝙖𝙩 𝙮𝙤𝙪 𝙥𝙪𝙩"
+          </Text>
+          <Text textAlign="center">💥DiDi Food 💥Rappi 📲WhatsApp</Text>
         </VStack>
-        <Divider marginY={4} />
+        <Divider borderColor="blackAlpha.500" marginY={4} />
         <Component {...pageProps} />
       </Container>
     </ChakraProvider>
