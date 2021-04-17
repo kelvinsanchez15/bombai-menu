@@ -25,7 +25,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             />
           </Box>
 
-          <Heading>Bombai</Heading>
+          <Heading>Bombai - MTY</Heading>
           <Text textAlign="center">
             ❤️ Comida Italo-Venezolana ❤️ Panadería Artesanal ❤️ Postres ❤️
             Encurtidos ❤️ Variedades y mucho más
