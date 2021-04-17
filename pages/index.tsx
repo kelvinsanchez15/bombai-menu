@@ -100,7 +100,7 @@ export default function Home({ products }: Props) {
 
       <main>
         <Tabs variant="solid-rounded" colorScheme="red" isFitted>
-          <TabList mb="1em" px={4} py={2} overflowX="auto">
+          <TabList mb="1em" py={2} overflowX="auto">
             <Tab bg="white" boxShadow="md">
               Todo
             </Tab>
@@ -128,7 +128,7 @@ export default function Home({ products }: Props) {
               ))}
           </TabList>
           <TabPanels>
-            <TabPanel>
+            <TabPanel padding={0}>
               <Grid
                 templateColumns="repeat(auto-fill, minmax(240px, 1fr))"
                 gap={6}
@@ -150,7 +150,7 @@ export default function Home({ products }: Props) {
             </TabPanel>
             {Boolean(products.length) &&
               uniqueProductByCategory.map((uniqueProduct) => (
-                <TabPanel key={uniqueProduct?.category}>
+                <TabPanel key={uniqueProduct?.category} padding={0}>
                   <Grid
                     templateColumns="repeat(auto-fill, minmax(240px, 1fr))"
                     gap={6}
