@@ -94,7 +94,7 @@ export default function Home({ products }: Props) {
   return (
     <>
       <Head>
-        <title>La Cocina de Turitto</title>
+        <title>Bombai</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -187,7 +187,7 @@ export default function Home({ products }: Props) {
               isExternal
               as={Link}
               colorScheme="whatsapp"
-              href={`https://wa.me/584166868029?text=${encodeURIComponent(
+              href={`https://wa.me/528129131222?text=${encodeURIComponent(
                 text
               )}`}
               width="fit-content"

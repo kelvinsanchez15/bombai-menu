@@ -5,6 +5,7 @@ import {
   Heading,
   Text,
   Divider,
+  Box,
 } from '@chakra-ui/react';
 import { AppProps } from 'next/app';
 import { Image } from '../src/components/Image';
@@ -15,14 +16,16 @@ function MyApp({ Component, pageProps }: AppProps) {
     <ChakraProvider theme={theme}>
       <Container maxW="container.lg" padding={4}>
         <VStack>
-          <Image
-            src="/logo.png"
-            alt="Logo"
-            borderRadius="full"
-            dimensions={[128, 128]}
-          />
+          <Box display="flex" height={36} width={36}>
+            <Image
+              src="/logo.png"
+              alt="Logo"
+              dimensions={[400, 400]}
+              priority
+            />
+          </Box>
 
-          <Heading>La Cocina de Turitto</Heading>
+          <Heading>Bombai</Heading>
           <Text textAlign="center">
             ❤️ Comida Italo-Venezolana ❤️ Panadería Artesanal ❤️ Postres ❤️
             Encurtidos ❤️ Variedades y mucho más
