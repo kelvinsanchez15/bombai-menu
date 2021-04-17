@@ -3,7 +3,7 @@ module.exports = {
     webpack5: true,
   },
   images: {
-    domains: ['user-images.githubusercontent.com'],
+    domains: ['user-images.githubusercontent.com', 'i.imgur.com'],
     deviceSizes: [
       320,
       480,
