@@ -22,15 +22,17 @@ export default function ProductCard({
       backgroundColor="whiteAlpha.900"
       boxShadow="md"
     >
-      <Image
-        borderRadius="3xl"
-        src={product.image}
-        alt={product.title}
-        dimensions={[400, 300]}
-        objectFit="cover"
-      />
+      <Box height="full">
+        <Image
+          borderRadius="3xl"
+          src={product.image}
+          alt={product.title}
+          dimensions={[400, 300]}
+          objectFit="cover"
+        />
+      </Box>
 
-      <Stack padding={5}>
+      <Stack padding={5} height="full" justifyContent="space-between">
         <Box minH={100}>
           <Heading size="lg">{product.title}</Heading>
           <Text color="GrayText">{product.description}</Text>
