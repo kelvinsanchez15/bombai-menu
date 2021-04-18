@@ -38,7 +38,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             />
           </Box>
 
-          <Heading color="white">Bombai - MTY</Heading>
+          <Heading color="white">BombaiMTY</Heading>
           <Text color="white" textAlign="center">
             Venezuelan Food 🇻🇪 - Boneless and Burgers 🔥
           </Text>
