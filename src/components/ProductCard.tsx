@@ -26,7 +26,7 @@ export default function ProductCard({
         borderRadius="3xl"
         src={product.image}
         alt={product.title}
-        dimensions={[400, 300]}
+        dimensions={[400, 250]}
         objectFit="cover"
       />
 
