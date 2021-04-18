@@ -4,12 +4,18 @@ import {
   VStack,
   Heading,
   Text,
-  Divider,
   Box,
+  Icon,
 } from '@chakra-ui/react';
 import { AppProps } from 'next/app';
 import { Image } from '../src/components/Image';
 import theme from '../src/styles/theme';
+import {
+  RiWhatsappFill,
+  RiInstagramFill,
+  RiFacebookBoxFill,
+} from 'react-icons/ri';
+import ExternalLink from '../src/components/ExternalLInk';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -36,12 +42,51 @@ function MyApp({ Component, pageProps }: AppProps) {
           <Text color="white" textAlign="center">
             Venezuelan Food 🇻🇪 - Boneless and Burgers 🔥
           </Text>
-          <Text color="white" textAlign="center">
-            "𝙇𝙞𝙛𝙚 𝙞𝙨 𝙡𝙞𝙠𝙚 𝙩𝙝𝙚 𝙖𝙧𝙚𝙥𝙖, 𝙞𝙩 𝙩𝙖𝙨𝙩𝙚𝙨 𝙬𝙝𝙖𝙩 𝙮𝙤𝙪 𝙥𝙪𝙩"
-          </Text>
-          <Text color="white" textAlign="center">
-            💥DiDi Food 💥Rappi 📲WhatsApp
-          </Text>
+
+          <Box>
+            <ExternalLink
+              title="Facebook"
+              href="https://www.facebook.com/BombaiMTY/"
+              icon={
+                <Icon
+                  color="white"
+                  w={6}
+                  h={6}
+                  m={2}
+                  _hover={{ fill: 'red' }}
+                  as={RiFacebookBoxFill}
+                />
+              }
+            />
+            <ExternalLink
+              title="Instagram"
+              href="https://www.instagram.com/bombaimty/"
+              icon={
+                <Icon
+                  color="white"
+                  w={6}
+                  h={6}
+                  m={2}
+                  _hover={{ fill: 'red' }}
+                  as={RiInstagramFill}
+                />
+              }
+            />
+            <ExternalLink
+              title="Whatsapp"
+              href="https://wa.me/528129131222"
+              icon={
+                <Icon
+                  color="white"
+                  w={6}
+                  h={6}
+                  m={2}
+                  _hover={{ fill: 'red' }}
+                  as={RiWhatsappFill}
+                />
+              }
+            />
+          </Box>
         </VStack>
       </Box>
 
