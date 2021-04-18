@@ -4,18 +4,31 @@ import {
   VStack,
   Heading,
   Text,
-  Divider,
   Box,
+  Icon,
 } from '@chakra-ui/react';
 import { AppProps } from 'next/app';
 import { Image } from '../src/components/Image';
 import theme from '../src/styles/theme';
+import {
+  RiWhatsappFill,
+  RiInstagramFill,
+  RiFacebookBoxFill,
+} from 'react-icons/ri';
+import ExternalLink from '../src/components/ExternalLInk';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={theme}>
-      <Container maxW="container.lg" padding={4}>
-        <VStack>
+      <Box as="header" position="relative" padding={4} backgroundColor="black">
+        <Box opacity={0.5}>
+          <Image
+            src="https://user-images.githubusercontent.com/4708484/115153767-97820400-a045-11eb-9fb9-40fec95c010d.jpg"
+            alt=""
+            objectFit="cover"
+          />
+        </Box>
+        <VStack position="relative" zIndex={1}>
           <Box display="flex" height={36} width={36}>
             <Image
               src="/logo.png"
@@ -25,16 +38,59 @@ function MyApp({ Component, pageProps }: AppProps) {
             />
           </Box>
 
-          <Heading>Bombai - MTY</Heading>
-          <Text textAlign="center">
+          <Heading color="white">BombaiMTY</Heading>
+          <Text color="white" textAlign="center">
             Venezuelan Food 🇻🇪 - Boneless and Burgers 🔥
           </Text>
-          <Text textAlign="center">
-            "𝙇𝙞𝙛𝙚 𝙞𝙨 𝙡𝙞𝙠𝙚 𝙩𝙝𝙚 𝙖𝙧𝙚𝙥𝙖, 𝙞𝙩 𝙩𝙖𝙨𝙩𝙚𝙨 𝙬𝙝𝙖𝙩 𝙮𝙤𝙪 𝙥𝙪𝙩"
-          </Text>
-          <Text textAlign="center">💥DiDi Food 💥Rappi 📲WhatsApp</Text>
+
+          <Box>
+            <ExternalLink
+              title="Facebook"
+              href="https://www.facebook.com/BombaiMTY/"
+              icon={
+                <Icon
+                  color="white"
+                  w={6}
+                  h={6}
+                  m={2}
+                  _hover={{ fill: 'red' }}
+                  as={RiFacebookBoxFill}
+                />
+              }
+            />
+            <ExternalLink
+              title="Instagram"
+              href="https://www.instagram.com/bombaimty/"
+              icon={
+                <Icon
+                  color="white"
+                  w={6}
+                  h={6}
+                  m={2}
+                  _hover={{ fill: 'red' }}
+                  as={RiInstagramFill}
+                />
+              }
+            />
+            <ExternalLink
+              title="Whatsapp"
+              href="https://wa.me/528129131222"
+              icon={
+                <Icon
+                  color="white"
+                  w={6}
+                  h={6}
+                  m={2}
+                  _hover={{ fill: 'red' }}
+                  as={RiWhatsappFill}
+                />
+              }
+            />
+          </Box>
         </VStack>
-        <Divider borderColor="blackAlpha.500" marginY={4} />
+      </Box>
+
+      <Container maxW="container.lg" padding={4}>
         <Component {...pageProps} />
       </Container>
     </ChakraProvider>

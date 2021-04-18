@@ -94,7 +94,7 @@ export default function Home({ products }: Props) {
   return (
     <>
       <Head>
-        <title>Bombai - MTY</title>
+        <title>BombaiMTY</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
