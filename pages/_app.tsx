@@ -45,7 +45,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         </VStack>
       </Box>
 
-      <Container padding={4}>
+      <Container maxW="container.lg" padding={4}>
         <Component {...pageProps} />
       </Container>
     </ChakraProvider>
