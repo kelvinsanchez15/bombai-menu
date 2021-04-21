@@ -11,9 +11,9 @@ import {
   Tab,
   TabPanels,
   TabPanel,
-  Avatar,
   Box,
 } from '@chakra-ui/react';
+
 import { ProductWithCount } from '../src/types';
 import api from '../src/utils/api';
 import parseCurrency from '../src/utils/parseCurrency';
@@ -36,28 +36,24 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 export default function Home({ products }: Props) {
-  const initialState = products.map((product) => {
-    return { ...product, quantity: 0 };
-  });
+  const initialState = products.map((product) => ({ ...product, quantity: 0 }));
   const [cart, setCart] = React.useState<ProductWithCount[]>(initialState);
 
   const uniqueProductByCategory = Array.from(
     new Set(products.map((a) => a.category))
-  ).map((category) => {
-    return products.find((a) => a.category === category);
-  });
+  ).map((category) => products.find((a) => a.category === category));
 
   const handleIncreaseProductQuantity = (id: string) => {
-    let updatedCart = cart.map((item) =>
+    const updatedCart = cart.map((item) =>
       item.id === id ? { ...item, quantity: item.quantity + 1 } : item
     );
     setCart(updatedCart);
   };
 
   const handleDecreaseProductQuantity = (id: string) => {
-    let updatedCart = cart.map((item) => {
+    const updatedCart = cart.map((item) => {
       if (item.id === id) {
-        if (item.quantity == 0) return item;
+        if (item.quantity === 0) return item;
         return { ...item, quantity: item.quantity - 1 };
       }
       return item;
@@ -67,40 +63,61 @@ export default function Home({ products }: Props) {
 
   const filteredCart = React.useMemo(
     () => cart.filter((product) => product.quantity > 0),
-    cart
+    [cart]
   );
 
-  const text = React.useMemo(() => {
-    return filteredCart
-      .reduce(
-        (message, product) =>
-          message.concat(
-            `* (${product.quantity}) ${product.title} - ${parseCurrency(
-              product.price
-            )}\n`
-          ),
-        ``
-      )
-      .concat(
-        `\nTotal: ${parseCurrency(
-          filteredCart.reduce(
-            (total, product) => total + product.price * product.quantity,
-            0
-          )
-        )}`
-      );
-  }, [filteredCart]);
+  const text = React.useMemo(
+    () =>
+      filteredCart
+        .reduce(
+          (message, product) =>
+            message.concat(
+              `* (${product.quantity}) ${product.title} - ${parseCurrency(
+                product.price
+              )}\n`
+            ),
+          ``
+        )
+        .concat(
+          `\nTotal: ${parseCurrency(
+            filteredCart.reduce(
+              (total, product) => total + product.price * product.quantity,
+              0
+            )
+          )}`
+        ),
+    [filteredCart]
+  );
 
   return (
     <>
       <Head>
         <title>BombaiMTY</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link href="/favicon.ico" rel="icon" />
       </Head>
 
       <main>
-        <Tabs variant="solid-rounded" colorScheme="red" isFitted>
-          <TabList mb="1em" py={2} overflowX="auto">
+        <Tabs isFitted colorScheme="red" variant="solid-rounded">
+          <TabList
+            css={{
+              '&::-webkit-scrollbar': {
+                width: '12px',
+                backgroundColor: '#F5F5F5',
+              },
+              '&::-webkit-scrollbar-track': {
+                borderRadius: '10px',
+                backgroundColor: '#F5F5F5',
+              },
+              '&::-webkit-scrollbar-thumb': {
+                background: '#D62929',
+                borderRadius: '10px',
+                WebkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,.3)',
+              },
+            }}
+            mb="1em"
+            overflowX="auto"
+            py={2}
+          >
             <Tab bg="white" boxShadow="md">
               Todo
             </Tab>
@@ -109,18 +126,18 @@ export default function Home({ products }: Props) {
               uniqueProductByCategory.map((uniqueProduct) => (
                 <Tab
                   key={uniqueProduct?.category}
-                  ml={5}
                   bg="white"
                   boxShadow="md"
+                  ml={5}
                 >
-                  <Box as="span" width={8} height={8} mr={4}>
+                  <Box as="span" height={8} mr={4} width={8}>
                     <Image
-                      src={uniqueProduct?.image || ''}
+                      priority
                       alt="Logo"
                       borderRadius="full"
                       dimensions={[100, 100]}
                       objectFit="cover"
-                      priority
+                      src={uniqueProduct?.image || ''}
                     />
                   </Box>
                   {uniqueProduct?.category}
@@ -130,20 +147,20 @@ export default function Home({ products }: Props) {
           <TabPanels>
             <TabPanel padding={0}>
               <Grid
-                templateColumns="repeat(auto-fill, minmax(240px, 1fr))"
                 gap={6}
+                templateColumns="repeat(auto-fill, minmax(240px, 1fr))"
               >
                 {Boolean(products.length) &&
                   cart.map((product) => (
                     <ProductCard
                       key={product.id}
-                      product={product}
-                      handleIncreaseProductQuantity={
-                        handleIncreaseProductQuantity
-                      }
                       handleDecreaseProductQuantity={
                         handleDecreaseProductQuantity
                       }
+                      handleIncreaseProductQuantity={
+                        handleIncreaseProductQuantity
+                      }
+                      product={product}
                     />
                   ))}
               </Grid>
@@ -152,21 +169,21 @@ export default function Home({ products }: Props) {
               uniqueProductByCategory.map((uniqueProduct) => (
                 <TabPanel key={uniqueProduct?.category} padding={0}>
                   <Grid
-                    templateColumns="repeat(auto-fill, minmax(240px, 1fr))"
                     gap={6}
+                    templateColumns="repeat(auto-fill, minmax(240px, 1fr))"
                   >
                     {cart.map(
                       (product) =>
                         product.category === uniqueProduct?.category && (
                           <ProductCard
                             key={product.id}
-                            product={product}
-                            handleIncreaseProductQuantity={
-                              handleIncreaseProductQuantity
-                            }
                             handleDecreaseProductQuantity={
                               handleDecreaseProductQuantity
                             }
+                            handleIncreaseProductQuantity={
+                              handleIncreaseProductQuantity
+                            }
+                            product={product}
                           />
                         )
                     )}

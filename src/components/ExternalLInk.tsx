@@ -7,13 +7,13 @@ interface Props extends LinkProps {
 
 const ExternalLink = ({ icon, href, ...rest }: Props) => (
   <Link
+    isExternal
+    color="brand.black"
+    fontFamily="heading"
     fontSize="xl"
     fontWeight={500}
-    fontFamily="heading"
-    color="brand.black"
-    my={5}
     href={href}
-    isExternal
+    my={5}
     {...rest}
   >
     {icon}

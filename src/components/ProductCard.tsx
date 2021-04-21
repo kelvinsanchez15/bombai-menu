@@ -1,7 +1,8 @@
-import { Button } from '@chakra-ui/button';
-import { Box, Heading, Stack, Text } from '@chakra-ui/layout';
+import { Button, Box, Heading, Stack, Text } from '@chakra-ui/react';
+
 import { ProductWithCount } from '../types';
 import parseCurrency from '../utils/parseCurrency';
+
 import { Image } from './Image';
 
 interface Props {
@@ -18,28 +19,28 @@ export default function ProductCard({
   return (
     <Stack
       key={product.id}
-      borderRadius="3xl"
       backgroundColor="whiteAlpha.900"
+      borderRadius="3xl"
       boxShadow="md"
     >
       <Image
-        borderRadius="3xl"
-        src={product.image}
         alt={product.title}
+        borderRadius="3xl"
         dimensions={[400, 250]}
         objectFit="cover"
+        src={product.image}
       />
 
       <Stack
-        padding={5}
         height={{ base: 'auto', sm: 60 }}
         justifyContent="space-between"
+        padding={5}
       >
         <Box>
-          <Heading size="lg" mb={1}>
+          <Heading mb={1} size="lg">
             {product.title}
           </Heading>
-          <Text lineHeight="short" color="GrayText">
+          <Text color="GrayText" lineHeight="short">
             {product.description}
           </Text>
         </Box>
@@ -53,18 +54,18 @@ export default function ProductCard({
             </Text>
           </Box>
           <Box
+            alignItems="center"
             display="flex"
             justifyContent="space-between"
-            alignItems="center"
           >
-            <Heading size="lg" as="span" flexBasis={1}>
+            <Heading as="span" flexBasis={1} size="lg">
               {parseCurrency(product.price)}
             </Heading>
 
-            <Box display="flex" alignItems="center">
+            <Box alignItems="center" display="flex">
               <Button
-                colorScheme="blackAlpha"
                 borderRadius="full"
+                colorScheme="blackAlpha"
                 onClick={() => handleDecreaseProductQuantity(product.id)}
               >
                 -
@@ -73,8 +74,8 @@ export default function ProductCard({
                 {product.quantity}
               </Text>
               <Button
-                colorScheme="red"
                 borderRadius="full"
+                colorScheme="red"
                 onClick={() => handleIncreaseProductQuantity(product.id)}
               >
                 +

@@ -1,4 +1,5 @@
 import Papa from 'papaparse';
+
 import { Product } from '../types';
 
 export default {
