@@ -102,7 +102,6 @@ const ImageWithChakra = chakra(
 
     return (
       <NextImage
-        borderRadius={borderRadius}
         className={className}
         loading={loading}
         objectFit={objectFit}
