@@ -98,7 +98,26 @@ export default function Home({ products }: Props) {
 
       <main>
         <Tabs isFitted colorScheme="red" variant="solid-rounded">
-          <TabList mb="1em" overflowX="auto" py={2}>
+          <TabList
+            css={{
+              '&::-webkit-scrollbar': {
+                width: '12px',
+                backgroundColor: '#F5F5F5',
+              },
+              '&::-webkit-scrollbar-track': {
+                borderRadius: '10px',
+                backgroundColor: '#F5F5F5',
+              },
+              '&::-webkit-scrollbar-thumb': {
+                background: '#D62929',
+                borderRadius: '10px',
+                WebkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,.3)',
+              },
+            }}
+            mb="1em"
+            overflowX="auto"
+            py={2}
+          >
             <Tab bg="white" boxShadow="md">
               Todo
             </Tab>
